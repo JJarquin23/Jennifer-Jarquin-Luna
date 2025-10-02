@@ -22,12 +22,26 @@
 </form>
 
 <!-- A place to show the message -->
-<div id="displayMessage"></div>
+<section id="leave-message">
+  <h2>Leave a Message</h2>
+  <form id="contactForm">
+    <label for="usersName">Name:</label>
+    <input type="text" id="usersName" name="usersName" required>
 
-    <section id="messages">
-      <h2>Messages</h2>
-      <ul></ul>
-    </section>
+    <label for="usersEmail">Email:</label>
+    <input type="email" id="usersEmail" name="usersEmail" required>
+
+    <label for="usersMessage">Message:</label>
+    <textarea id="usersMessage" name="usersMessage" required></textarea>
+
+    <button type="submit">Send</button>
+  </form>
+</section>
+<!-- Message List -->
+<section id="messages">
+  <h2>Messages</h2>
+  <ul></ul>
+</section>
 <body>
   <!-- Navigation -->
   <nav>
@@ -109,27 +123,28 @@
     </div>
   </section>
   <script>
-  const form = document.getElementById("contactForm");
-  const display = document.getElementById("displayMessage");
+  const newMessage = document.createElement("li");
+  newMessage.innerHTML = `
+    <a href="mailto:${email}">${name}</a>: 
+    <span>${message}</span>
+  `;
 
-  form.addEventListener("submit", function(event) {
-    event.preventDefault(); // stop the page from refreshing
+  // Create remove button
+  const removeButton = document.createElement("button");
+  removeButton.innerText = "remove";
+  removeButton.type = "button";
 
-    // Get values from the form
-    const name = document.getElementById("usersName").value;
-    const email = document.getElementById("usersEmail").value;
-    const message = document.getElementById("usersMessage").value;
-
-    // Show the result on the page
-    display.innerHTML = `
-      <h3>Thank you, ${name}!</h3>
-      <p>We got your email: <strong>${email}</strong></p>
-      <p>Your message: "${message}"</p>
-    `;
-    
-    // Optional: clear the form
-    form.reset();
+  removeButton.addEventListener("click", function () {
+    newMessage.remove();
   });
+
+  // Append button to li, then li to ul
+  newMessage.appendChild(removeButton);
+  messageList.appendChild(newMessage);
+
+  // Reset form
+  form.reset();
+});
 </script>
 </body>
 </html>
