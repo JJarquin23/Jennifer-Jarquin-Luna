@@ -96,6 +96,52 @@ section {
   background: #911873;
 }
 
+/* ========== Form Styling (Assignment Requirement) ========== */
+form {
+  margin: 20px 0;
+  padding: 20px;
+  background: #f4f4f4;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+  display: block;
+  font-weight: bold;
+  margin: 10px 0 5px;
+  color: #751062;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 12px; /* more touch-friendly */
+  margin-bottom: 15px;
+  border: 1px solid #751062;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+form textarea {
+  min-height: 100px;
+  resize: vertical; /* allow resizing only up/down */
+}
+
+form button {
+  background: #ce409f;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+form button:hover {
+  background: #fc64a6;
+}
+
 /* ========== Media Queries (Responsiveness) ========== */
 
 /* Tablet */
@@ -110,6 +156,10 @@ section {
   section {
     padding: 30px;
   }
+  form input,
+  form textarea {
+    font-size: 1.1rem; /* slightly bigger on tablet */
+  }
 }
 
 /* Desktop */
@@ -118,44 +168,16 @@ section {
     font-size: 3rem;
     color: darkgreen;
   }
-  .project-list, .experience-container {
+  .project-list,
+  .experience-container {
     grid-template-columns: repeat(3, 1fr);
   }
   .connect-links a {
     padding: 15px 25px;
     font-size: 1.1rem;
   }
-}
-form {
-  margin: 20px 0;
-  padding: 15px;
-  background: #f4f4f4;
-  border-radius: 8px;
-}
-
-form label {
-  display: block;
-  margin: 10px 0 5px;
-}
-
-form input,
-form textarea {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 15px;
-  border: 1px solid #751062;
-  border-radius: 4px;
-}
-
-form button {
-  background: #ce409f;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-form button:hover {
-  background: #fc64a6;
+  form {
+    max-width: 600px;
+    margin: 30px auto; /* center the form on desktop */
+  }
 }
